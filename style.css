@@ -148,7 +148,6 @@
     margin: 0 0 35px 0;
     background: rgb(247, 247, 247);
     border: 1px solid rgba(147, 184, 189,0.8);
-    
     -webkit-animation-duration: 0.5s;
     -webkit-animation-timing-function: ease;
     -webkit-animation-fill-mode: both;
@@ -157,6 +156,17 @@
     animation-timing-function: ease;
     animation-fill-mode: both;
   }
+  input[type="text"]:hover{
+    border-color:#4ab3c6;
+  }
+  input[type="password"]:hover{
+    border-color:#4ab3c6;
+  }
+  input[type="email"]:hover{
+    border-color:#4ab3c6;
+  }
+  
+
   
   #paracadastro:target ~ .content #cadastro,
   #paralogin:target ~ .content #login{
@@ -195,3 +205,19 @@
       transform: translateX(0);
     }
   }
+  /* Estilo específico para o campo de data */
+input[type="date"] {
+  color: #555;
+  background-color: #fff;
+  padding: 10px;
+  border: 1px solid #b2b2b2;
+  border-radius: 3px;
+  box-shadow: 0px 1px 4px 0px rgba(168, 168, 168, 0.6) inset;
+  transition: all 0.2s linear;
+  font-size: 14px;
+}
+
+/* Efeito ao passar o mouse no campo de data */
+input[type="date"]:hover {
+  border-color: #4ab3c6;
+}
