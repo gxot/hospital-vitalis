@@ -3,7 +3,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <head>
-  <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom shadow-sm px-4 py-2">
+  <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom shadow-sm px-6 py-3">
     <div class="container-fluid">
       <a class="navbar-brand fw-bold text-primary" href="#">Agendamentos</a>
   
@@ -18,15 +18,15 @@
           <img
             src="https://img.icons8.com/?size=100&id=11730&format=png&color=000000"
             alt="Usuário"
-            width="40"
-            height="40"
-            class="rounded-circle"
+            width="50"
+            height="50"
+            class="rounded-square"
           />
         </a>
         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
-          <li><a class="dropdown-item" href="#">Modificar meus dados cadastrais</a></li>
+          <li><a class="dropdown-item" href="dados_usuario.html">Modificar meus dados cadastrais</a></li>
           <li><hr class="dropdown-divider" /></li>
-          <li><a class="dropdown-item text-danger" href="#">Sair</a></li>
+          <li><a class="dropdown-item text-danger" href="login.html">Sair</a></li>
         </ul>
       </div>
     </div>
@@ -47,30 +47,36 @@
 
     <div class="card-custom">
       <div class="mb-3">
-        <label class="form-label">Selecione seu plano de saúde</label>
-        <select class="form-select">
-          <option selected>Amil - Advanced Executivo</option>
+        <label class="form-label" for="planoSaude">Selecione seu plano de saúde</label>
+        <select class="form-select" id="planoSaude">
+          <option selected disabled>Plano de Saúde</option>
+          <option>Amil - Advanced Executivo</option>
+          <option>Bradesco Saúde - Top Nacional</option>
+          <option>Unimed - Alfa Premium</option>
         </select>
       </div>
 
       <div class="mb-3">
         <label class="form-label">O que você quer agendar?</label>
         <select class="form-select">
-          <option selected>Cardiologia: Cardiologia</option>
+          <option selected disable>Especialidade</option>
+          <option>Cardiologia: Cardiologia</option>
         </select>
       </div>
 
       <div class="mb-3">
         <label class="form-label">Onde quer marcar?</label>
         <select class="form-select">
-          <option selected>Pilar Centro Médico</option>
+          <option selected disable>Local</option>
+          <option>Pilar Centro Médico</option>
         </select>
       </div>
 
       <div class="mb-3">
         <label class="form-label">Sabe com quem marcar?</label>
         <select class="form-select">
-          <option selected>Caio De Lacerda Andrade</option>
+          <option selected disable>Médico</option>
+          <option>Caio De Lacerda Andrade</option>
         </select>
       </div>
 
