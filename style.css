@@ -265,3 +265,18 @@ input[type="date"]:hover {
 .btn-custom:hover {
   background-color: #0099cc;
 }
+button {
+  margin: 30px auto;
+  padding: 12px 24px;
+  background-color: #066a75;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1.1em;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #023e8a;
+}

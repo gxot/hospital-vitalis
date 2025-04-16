@@ -4,6 +4,9 @@ body {
     padding: 0;
     background-color: #f4f9f9;
     line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 h2 {
@@ -30,7 +33,9 @@ h3 {
 
 button {
     display: block;
-    margin: 30px auto;
+    margin: auto;
+    margin-top: auto;
+    margin-bottom: 30px;
     padding: 12px 24px;
     background-color: #066a75;
     color: white;
