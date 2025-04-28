@@ -6,10 +6,21 @@ body {
 }
 
 header {
-    background-color: #066a75;
-    color: white;
+    background-color: #147680;
     padding: 20px 0;
     text-align: center;
+}
+
+.logo {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.logo img {
+    width: 100%;
+    height: auto;
+    display: block;
 }
 
 nav {

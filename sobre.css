@@ -33,9 +33,7 @@ h3 {
 
 button {
     display: block;
-    margin: auto;
-    margin-top: auto;
-    margin-bottom: 30px;
+    margin: 30px auto;
     padding: 12px 24px;
     background-color: #066a75;
     color: white;
