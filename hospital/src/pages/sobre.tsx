@@ -1,5 +1,5 @@
 import React from 'react';
-import '../styles/sobre.css';
+import '../styles/pages/sobre.css';
 
 const Sobre: React.FC = () => {
   const voltarInicio = () => {

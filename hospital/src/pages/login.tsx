@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import '../styles/style.css';
+import '../styles/pages/style.css';
 
 const Login: React.FC = () => {
   const [showCadastro, setShowCadastro] = useState(false);
@@ -40,14 +40,16 @@ const Login: React.FC = () => {
               <p>
                 <input type="submit" value="Logar" />
               </p>
-
-              <p className="link">
-                Ainda não tem conta?{' '}
-                <button type="button" onClick={() => setShowCadastro(true)} className="link-button">
-                  Cadastre-se
-                </button>
-              </p>
             </form>
+            <p>
+              Ainda não tem conta?{' '}
+              <a href="#" onClick={() => setShowCadastro(true)}>
+                Cadastre-se
+              </a>
+            </p>
+            <button onClick={() => window.location.href = '/'}>
+              Voltar para a página inicial
+            </button>
           </div>
         )}
 
@@ -93,13 +95,12 @@ const Login: React.FC = () => {
                 </button>
               </p>
             </form>
+            <button onClick={() => window.location.href = '/'}>
+              Voltar para a página inicial
+            </button>
           </div>
         )}
       </div>
-
-      <button onClick={() => window.location.href = 'inicio.html'}>
-        Voltar para a página inicial
-      </button>
     </div>
   );
 };
