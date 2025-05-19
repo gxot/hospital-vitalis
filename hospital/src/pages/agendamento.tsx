@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../styles/pages/style.css';
 
@@ -7,7 +8,7 @@ const Agendamento: React.FC = () => {
     <>
       <nav className="navbar navbar-expand-lg navbar-light bg-white border-bottom shadow-sm px-6 py-3">
         <div className="container-fluid">
-          <a className="navbar-brand fw-bold text-primary" href="#">Agendamentos</a>
+          <Link to="/" className="navbar-brand fw-bold text-primary">Agendamentos</Link>
 
           <div className="dropdown ms-auto">
             <a
