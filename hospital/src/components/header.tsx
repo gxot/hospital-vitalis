@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import '../styles/components/navbar.css';
 
 
-export default function header() {
+export default function Header() {
     return (
     <nav>
         <Link to="/">Início</Link>
