@@ -1,0 +1,221 @@
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+  margin: 0;
+  padding: 0;
+  background-color: #f8f9fa; 
+  color: #333;
+  line-height: 1.7;
+}
+
+.sobre-page {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Estilos do Hero Section */
+.sobre-hero {
+  position: relative;
+  width: 100%;
+  height: 60vh; /* Altura ajustável */
+  overflow: hidden;
+  color: white;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Garante que a imagem cubra a área sem distorcer */
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1; /* Coloca a imagem atrás do texto */
+  filter: brightness(0.6); /* Escurece a imagem para o texto ter mais contraste */
+}
+
+.hero-text h1 {
+  font-size: 3.5em;
+  margin-bottom: 0.5em;
+  font-weight: 700;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.hero-text p {
+  font-size: 1.5em;
+  font-weight: 300;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+  color: white; /* Garante que o P do hero seja branco */
+  text-align: center; /* Garante centralização do P no hero */
+  max-width: 100%; /* Remove o max-width para o P do hero */
+}
+
+/* Container principal do conteúdo */
+.sobre-container {
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.sobre-section {
+  margin-bottom: 50px;
+  padding-bottom: 30px;
+  border-bottom: 1px solid #e9ecef; /* Linha divisória sutil */
+}
+
+.sobre-section:last-of-type {
+  border-bottom: none;
+  margin-bottom: 30px;
+}
+
+.sobre-section h2 {
+  color: #066a75; 
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 2.2em;
+  font-weight: 600;
+  position: relative;
+  padding-bottom: 10px;
+}
+
+/* Linha decorativa abaixo do H2 */
+.sobre-section h2::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 70px;
+  height: 3px;
+  background-color: #17a2b8; 
+}
+
+
+.sobre-section p {
+  color: #555; 
+  margin-bottom: 15px;
+  text-align: justify; 
+  padding: 0; 
+}
+
+/* Grid para Valores */
+.valores-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 25px;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.valor-item {
+  background-color: #f8f9fa;
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px solid #e9ecef;
+}
+
+.valor-item i { /* Estilo para ícones */
+  font-size: 2.5em;
+  color: #066a75;
+  margin-bottom: 15px;
+}
+
+.valor-item h3 {
+  color: #0d8aa0; /* Teal um pouco mais claro para os títulos dos valores */
+  font-size: 1.4em;
+  margin-bottom: 10px;
+  text-align: center; /* Garante centralização */
+  margin-top: 0; /* Reseta margin-top do h3 original */
+}
+
+/* Layout para seções com imagem (ex: Infraestrutura, Equipe) */
+.infra-content, .equipe-content {
+  display: flex;
+  flex-direction: column; /* Empilha por padrão */
+  align-items: center;
+  gap: 20px;
+}
+
+.section-image {
+  width: 100%;
+  max-width: 400px; /* Limita o tamanho da imagem */
+  height: auto;
+  border-radius: 8px;
+  object-fit: cover;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* Em telas maiores, pode colocar imagem ao lado do texto */
+@media (min-width: 768px) {
+  .infra-content, .equipe-content {
+    flex-direction: row; /* Lado a lado */
+  }
+  .infra-content p, .equipe-content p {
+    flex: 1; /* Ocupa o espaço restante */
+  }
+  .infra-content .section-image, .equipe-content .section-image {
+    flex-basis: 300px; /* Define um tamanho base para a imagem */
+    order: initial; /* Ordem padrão */
+  }
+  .equipe-content .section-image { order: -1; margin-right: 20px; margin-left: 0;}
+}
+
+/* Botões */
+.sobre-actions {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.btn-sobre {
+  display: inline-block;
+  margin: 10px;
+  padding: 12px 28px;
+  background-color: #066a75; 
+  color: white;
+  border: none;
+  border-radius: 50px; /* Botões mais arredondados */
+  cursor: pointer;
+  font-size: 1.1em;
+  text-decoration: none;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.btn-sobre:hover {
+  background-color: #055660; /* Teal mais escuro no hover */
+  transform: translateY(-2px);
+}
+
+.btn-sobre.btn-secundario {
+  background-color: transparent;
+  color: #066a75;
+  border: 2px solid #066a75;
+}
+
+.btn-sobre.btn-secundario:hover {
+  background-color: #066a75;
+  color: white;
+}
+
+
+/* Responsividade adicional */
+@media (max-width: 768px) {
+  .hero-text h1 {
+    font-size: 2.5em;
+  }
+  .hero-text p {
+    font-size: 1.2em;
+  }
+  .sobre-section h2 {
+    font-size: 1.8em;
+  }
+  .valor-item h3 {
+    font-size: 1.2em;
+  }
+}

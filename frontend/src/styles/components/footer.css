@@ -1,0 +1,125 @@
+/* === footer.css === */
+
+.site-footer {
+  background-color: #055660; /* Um tom de azul/teal um pouco mais escuro que o header para diferenciar */
+  color: #e0f2f1; /* Cor de texto clara, mas não branco puro para suavidade */
+  padding: 50px 0 20px 0; /* Mais padding no topo, menos no bottom */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Fonte consistente */
+  line-height: 1.7;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.footer-main-content {
+  display: flex;
+  flex-wrap: wrap; /* Permite que as colunas quebrem em telas menores */
+  justify-content: space-between;
+  gap: 30px; /* Espaço entre as colunas */
+  margin-bottom: 40px;
+}
+
+.footer-column {
+  flex: 1; /* Tenta distribuir o espaço igualmente */
+  min-width: 220px; /* Largura mínima para cada coluna antes de quebrar */
+  margin-bottom: 20px; /* Espaço se as colunas quebrarem */
+}
+
+.footer-column h3 {
+  font-size: 1.25em;
+  color: #ffffff; /* Títulos em branco para destaque */
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #07808a; /* Linha com tom de teal mais claro */
+  font-weight: 600;
+}
+
+.footer-about-text {
+  font-size: 0.9em;
+  color: #b2dfdb; /* Tom mais claro para o texto descritivo */
+}
+
+.footer-column ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-column ul li {
+  margin-bottom: 10px;
+}
+
+.footer-column a,
+.footer-bottom a {
+  color: #e0f2f1;
+  text-decoration: none;
+  transition: color 0.2s ease-in-out;
+}
+
+.footer-column a:hover,
+.footer-bottom a:hover {
+  color: #ffffff; /* Mais brilho no hover */
+  text-decoration: underline;
+}
+
+.contact-column address {
+  font-style: normal;
+}
+
+.contact-column p {
+  margin-bottom: 10px;
+  display: flex; /* Para alinhar ícone e texto */
+  align-items: center;
+  font-size: 0.95em;
+}
+
+.contact-column svg { /* Estilo para os ícones SVG */
+  margin-right: 10px;
+  fill: #80cbc4; /* Cor para os ícones SVG (teal claro) */
+  flex-shrink: 0; /* Evita que o ícone encolha */
+}
+.contact-column a {
+  display: inline-flex; /* Para que o hover no texto do link funcione bem */
+  align-items: center;
+}
+
+/* Footer Bottom */
+.footer-bottom {
+  text-align: center;
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid #07808a; /* Linha divisória com tom de teal mais claro */
+  font-size: 0.85em;
+}
+
+.footer-bottom p {
+  margin: 5px 0;
+  color: #b2dfdb;
+}
+
+.footer-dev-note a { /* Links no rodapé inferior */
+    font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .footer-main-content {
+    flex-direction: column; /* Empilha as colunas */
+    align-items: center; /* Centraliza as colunas empilhadas */
+    text-align: center; /* Centraliza o texto dentro das colunas */
+  }
+  .footer-column {
+    min-width: 100%; /* Colunas ocupam largura total */
+    margin-bottom: 30px;
+  }
+  .footer-column h3 {
+    border-bottom-style: none; /* Remove borda para economizar espaço */
+    padding-bottom: 5px;
+    text-align: center;
+  }
+  .contact-column p {
+    justify-content: center; /* Centraliza ícone e texto */
+  }
+}

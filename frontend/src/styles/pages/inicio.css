@@ -1,0 +1,386 @@
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f8f9fa; /* Cinza bem claro para o fundo geral */
+  color: #333; /* Cor de texto principal */
+  line-height: 1.6; /* Espaçamento entre linhas padrão */
+}
+
+.container { /* Centralizar e limitar largura */
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+/* Estilo base para títulos de seção PRINCIPAIS */
+.section-title {
+  text-align: center; /* Centraliza o texto do título */
+  font-size: 2.5em;
+  color: #066a75; /* Azul/Teal principal */
+  margin-bottom: 50px;
+  position: relative;
+  padding-bottom: 15px;
+}
+
+.section-title::after { /* Linha decorativa abaixo do título */
+  content: '';
+  position: absolute;
+  left: 50%; /* Centraliza a linha */
+  bottom: 0;
+  transform: translateX(-50%); /* Ajuste fino para centralização da linha */
+  width: 80px;
+  height: 4px;
+  background-color: #17a2b8; /* Tom de destaque */
+  border-radius: 2px;
+}
+
+/* === Hero Section === */
+.hero {
+  position: relative;
+  padding: 100px 20px;
+  text-align: center;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  color: white;
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 50, 70, 0.6); /* Overlay mais escuro para legibilidade */
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+}
+
+.hero h1 {
+  margin-bottom: 20px;
+  font-size: 3.2em;
+  font-weight: 700;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
+}
+
+.hero p {
+  font-size: 1.3em;
+  margin-bottom: 30px;
+  line-height: 1.7;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+}
+
+.hero-cta.btn.btn-primary {
+  background-color: #066a75;
+  border-color: #066a75;
+  color: white;
+  padding: 12px 30px;
+  font-size: 1.1em;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-radius: 50px;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  text-decoration: none;
+}
+
+.hero-cta.btn.btn-primary:hover {
+  background-color: #055660;
+  border-color: #055660;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
+}
+
+/* === Services Section === */
+.services {
+  padding: 70px 20px;
+  background-color: #ffffff; /* Fundo branco para destacar os cards */
+}
+
+.services-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.service {
+  background-color: #f8f9fa; /* Fundo dos cards */
+  border: 1px solid #e0e7ec;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.07);
+  padding: 30px 25px;
+  flex-basis: calc(33.333% - 30px);
+  min-width: 280px;
+  max-width: 350px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.service:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+}
+
+.service-icon-placeholder {
+  color: #066a75;
+  margin-bottom: 20px;
+}
+
+.service-icon-placeholder svg {
+  width: 50px;
+  height: 50px;
+}
+
+.service h3 {
+  color: #066a75;
+  margin-bottom: 15px;
+  font-size: 1.6em;
+  font-weight: 600;
+}
+
+.service p {
+  color: #555;
+  line-height: 1.7;
+  font-size: 0.95em;
+  flex-grow: 1;
+}
+
+/* === About Us Snippet Section === */
+.about-snippet {
+  padding: 70px 20px;
+  background-color: #eef7f8; /* Fundo levemente azulado/acinzentado */
+}
+
+.about-snippet-content {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 40px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.about-snippet-text {
+  flex: 1.5;
+  min-width: 300px;
+  text-align: center;
+}
+
+/* Título do "About Snippet" usando .section-title para centralização */
+.about-snippet-title {
+  font-size: 2.2em !important; /* Ajuste de tamanho, mantendo centralização */
+  text-align: center !important; /* Garante centralização */
+}
+.about-snippet-title::after {
+  left: 50% !important; /* Garante centralização da linha */
+  transform: translateX(-50%) !important;
+}
+
+
+.about-snippet-text p {
+  color: #444;
+  font-size: 1.05em;
+  line-height: 1.8;
+  margin-bottom: 30px;
+  text-align: center; /* Centraliza o parágrafo também se o título está centralizado */
+}
+
+.about-snippet-image img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+.about-snippet .btn.btn-secondary {
+  background-color: transparent;
+  border: 2px solid #066a75;
+  color: #066a75;
+  padding: 10px 25px;
+  font-size: 1em;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-radius: 50px;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+  text-decoration: none;
+  display: inline-block;
+  margin-top: 10px; /* Espaço acima do botão do parágrafo estiver centralizado */
+}
+
+.about-snippet .btn.btn-secondary:hover {
+  background-color: #066a75;
+  color: white;
+  transform: translateY(-2px);
+}
+
+/* === Why Choose Us Section === */
+.why-choose-us {
+  padding: 70px 20px;
+  background-color: #ffffff;
+}
+
+.features-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.feature-item {
+  background-color: #f8f9fa;
+  border: 1px solid #e0e7ec;
+  padding: 25px;
+  border-radius: 8px;
+  text-align: center;
+  flex-basis: calc(33.333% - 30px);
+  min-width: 260px;
+  max-width: 330px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.feature-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.08);
+}
+
+.feature-icon-placeholder {
+  color: #066a75;
+  margin-bottom: 15px;
+}
+
+.feature-icon-placeholder svg {
+  width: 48px;
+  height: 48px;
+}
+
+.feature-item h3 {
+  color: #066a75;
+  font-size: 1.4em;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.feature-item p {
+  color: #555;
+  font-size: 0.9em;
+  flex-grow: 1;
+}
+
+/* === Testimonials Section === */
+.testimonials {
+  padding: 70px 20px;
+  background-color: #eef7f8;
+}
+
+.testimonials-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.testimonial-card {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 30px;
+  flex-basis: calc(33.333% - 30px);
+  min-width: 280px;
+  max-width: 360px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+  border-left: 5px solid #066a75;
+  position: relative;
+}
+
+.testimonial-card::before {
+  content: '“';
+  position: absolute;
+  top: 10px;
+  left: 15px;
+  font-size: 4em;
+  color: #066a75;
+  opacity: 0.08;
+  line-height: 1;
+  z-index: 0;
+}
+
+.testimonial-quote {
+  font-style: italic;
+  color: #555;
+  margin-bottom: 20px;
+  font-size: 1em;
+  line-height: 1.7;
+  position: relative;
+  z-index: 1;
+}
+
+.testimonial-author {
+  font-weight: bold;
+  color: #066a75;
+  text-align: right;
+  font-size: 0.9em;
+}
+
+/* === Responsividade === */
+@media (max-width: 992px) { /* Telas médias (tablets) */
+  .service, .feature-item, .testimonial-card {
+    flex-basis: calc(50% - 20px);
+    min-width: calc(50% - 20px);
+  }
+  .services-grid, .features-grid, .testimonials-grid {
+    gap: 20px;
+  }
+  .about-snippet-content {
+    flex-direction: column;
+    text-align: center; /* Para centralizar o conteúdo do snippet em telas menores */
+  }
+  .about-snippet-text p { /* Garante que o parágrafo também centralize se o título está centralizado */
+      text-align: center;
+  }
+  .about-snippet-image {
+    margin-top: 20px;
+  }
+}
+
+@media (max-width: 768px) { /* Telas pequenas (celulares) */
+  .hero h1 {
+    font-size: 2.5em;
+  }
+  .hero p {
+    font-size: 1.1em;
+  }
+  .section-title, .about-snippet-title { /* Aplica a todos os títulos de seção */
+    font-size: 2em !important;
+  }
+  .service, .feature-item, .testimonial-card {
+    flex-basis: 100%;
+    min-width: 90%;
+    max-width: 400px;
+  }
+}

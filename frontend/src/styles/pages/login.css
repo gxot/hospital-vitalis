@@ -1,0 +1,242 @@
+/* === login.css === */
+
+/* Estilo da Página de Login/Cadastro */
+.login-page-container {
+  display: flex;
+  align-items: center; /* Centraliza verticalmente o card */
+  justify-content: center;
+  min-height: 100vh; /* Ocupa toda a altura da tela */
+  padding: 20px;
+  background-color: #f0f4f8; 
+  box-sizing: border-box;
+}
+
+/* Card de Autenticação (Login/Cadastro) */
+.auth-card {
+  background-color: #fff;
+  padding: 30px 40px 40px 40px; /* padding inferior */
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 50, 70, 0.12);
+  width: 100%;
+  max-width: 450px; /* Largura máxima do card */
+  text-align: center; /* Centraliza o logo*/
+  overflow: hidden; /* Para controlar as animações dos formulários */
+}
+
+.auth-logo-container {
+  margin-bottom: 25px;
+}
+
+.auth-logo {
+  max-width: 180px; /* Tamanho do logo */
+  height: auto;
+}
+
+/* Título dentro do card, usado por LoginForm e CadastroForm */
+.auth-card h2,
+.auth-card .form-title-within-card {
+  font-size: 1.9em;
+  color: #066a75; /* Cor tema */
+  margin-bottom: 25px;
+  font-weight: 600;
+  text-align: center;
+}
+
+/* Wrapper para os formulários (para animação) */
+.form-wrapper {
+  width: 100%;
+  transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out, max-height 0.5s ease-in-out;
+  overflow: hidden; /* Esconde o conteúdo durante a transição de altura */
+}
+
+.form-wrapper.active {
+  opacity: 1;
+  transform: translateX(0);
+  max-height: 1000px; /* Altura suficiente para o formulário */
+}
+
+.form-wrapper.inactive {
+  opacity: 0;
+  transform: translateX(-20px); 
+  max-height: 0; /* Colapsa o formulário inativo */
+  padding-top: 0 !important; /* Remove padding durante colapso */
+  padding-bottom: 0 !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  border: none !important; /* Remove bordas durante colapso */
+  pointer-events: none; /* Impede interação com formulário inativo */
+  visibility: hidden; /* Garante que não ocupe espaço */
+}
+
+/* Estilos Comuns para Elementos de Formulário */
+.auth-form-group {
+  margin-bottom: 20px;
+  text-align: left; /* Alinha labels e inputs à esquerda */
+}
+
+.auth-label {
+  display: block;
+  font-weight: 600;
+  color: #2d3748; /* Cinza escuro */
+  margin-bottom: 8px;
+  font-size: 0.95em;
+}
+
+.auth-input,
+input[type="text"].auth-input, /* Garante aplicação mesmo com tipo específico */
+input[type="email"].auth-input,
+input[type="password"].auth-input,
+input[type="date"].auth-input {
+  width: 100%;
+  padding: 12px 15px;
+  font-size: 1em;
+  color: #2d3748;
+  background-color: #f8fafc;
+  border: 1px solid #cbd5e0;
+  border-radius: 8px;
+  box-sizing: border-box; /* Essencial para consistência de tamanho */
+  transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  appearance: none; /* Remove alguns estilos padrão do navegador */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+.auth-input:focus {
+  border-color: #066a75; /* Cor tema no foco */
+  background-color: #fff;
+  box-shadow: 0 0 0 0.2rem rgba(6, 106, 117, 0.15); /* Sombra com cor tema */
+  outline: none;
+}
+
+input[type="date"].auth-input {
+  line-height: normal; /* Reset para input date */
+}
+input[type="date"].auth-input::-webkit-calendar-picker-indicator {
+  opacity: 0.6;
+  cursor: pointer;
+}
+
+
+.auth-button {
+  width: 100%;
+  padding: 12px 15px;
+  font-size: 1.05em;
+  font-weight: 600;
+  color: #fff !important; /* Garante cor do texto */
+  background-color: #066a75 !important; /* Cor tema */
+  border: none !important; /* Garante sem borda */
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out, transform 0.1s ease-in-out, box-shadow 0.2s ease;
+  margin-top: 10px; /* Espaço acima do botão */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.auth-button:hover {
+  background-color: #07808a !important; /* Cor tema accent */
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(6, 106, 117, 0.2) !important;
+}
+
+.auth-button:active {
+  background-color: #055660 !important; /* Cor tema darker */
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
+}
+
+.auth-link {
+  display: block;
+  text-align: center;
+  margin-top: 20px;
+  font-size: 0.9em;
+}
+
+.auth-link span { /* Para o texto "Não tem uma conta?" ou "Já possui uma conta?" */
+  color: #4a5568;
+}
+
+.auth-link a {
+  color: #066a75; /* Cor tema */
+  font-weight: 600;
+  text-decoration: none;
+  margin-left: 5px;
+  cursor: pointer; /* Garante cursor de link */
+}
+
+.auth-link a:hover {
+  text-decoration: underline;
+  color: #07808a; /* Cor tema accent */
+}
+
+.forgot-password-link { /* Link específico para "Esqueci minha senha" */
+  display: block;
+  text-align: right;
+  font-size: 0.85em;
+  margin-top: -10px; /* Puxa um pouco para cima */
+  margin-bottom: 20px;
+}
+.forgot-password-link a {
+  color: #718096; /* Cinza mais claro */
+  text-decoration: none;
+}
+.forgot-password-link a:hover {
+  text-decoration: underline;
+  color: #066a75; /* Cor tema */
+}
+
+/* Botão "Voltar para a página inicial" */
+.auth-back-to-home {
+  margin-top: 25px;
+  text-align: center;
+  padding-top: 20px; /* Espaço acima */
+  border-top: 1px solid #e2e8f0; /* Linha divisória sutil */
+}
+
+.btn-secondary-auth {
+  display: inline-block;
+  padding: 8px 18px;
+  font-size: 0.9em;
+  font-weight: 500;
+  color: #4a5568; /* Cinza escuro */
+  background-color: transparent;
+  border: 1px solid #cbd5e0; /* Borda sutil */
+  border-radius: 6px;
+  text-decoration: none;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.btn-secondary-auth:hover {
+  background-color: #f0f4f8; /* Fundo levemente acinzentado no hover */
+  border-color: #adb5bd;
+  color: #2d3748;
+}
+
+
+/* Responsividade */
+@media (max-width: 480px) {
+  .auth-card {
+    padding: 25px 25px 30px 25px; /* Menos padding em telas pequenas */
+    margin-left: 10px; /* Pequena margem para não colar nas bordas */
+    margin-right: 10px;
+    max-width: none; /* Permite que o card se ajuste melhor à tela */
+  }
+
+  .auth-card h2,
+  .auth-card .form-title-within-card {
+    font-size: 1.6em;
+    margin-bottom: 20px;
+  }
+
+  .auth-logo {
+    max-width: 150px;
+  }
+
+  .auth-input, .auth-button {
+    padding: 10px 12px;
+    font-size: 0.95em;
+  }
+
+  .auth-link {
+    font-size: 0.85em;
+  }
+}
