@@ -70,6 +70,19 @@ export default function CadastroForm ({ setShowCadastro }: CadastroProps ) {
               </div>
 
               <div className="auth-form-group">
+                  <label className="form-label" htmlFor="planoSaude">
+                   Plano de Saúde *
+                  </label>
+                  <select className="form-select" id="planoSaude" defaultValue="" required>
+                    <option disabled value="">Selecione o Plano de Saúde</option>
+                    <option>Amil - Advanced Executivo</option>
+                    <option>Bradesco Saúde - Top Nacional</option>
+                    <option>Unimed - Alfa Premium</option>
+                    <option>Particular</option>
+                  </select>
+              </div>
+
+              <div className="auth-form-group">
                 <label htmlFor="senha_cad" className="auth-label">Crie uma senha *</label>
                 <input 
                   id="senha_cad" 

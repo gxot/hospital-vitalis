@@ -89,19 +89,6 @@ const Agendamento: React.FC = () => {
                 </div>
 
                 <div className="mb-3">
-                  <label className="form-label" htmlFor="planoSaude">
-                    <HealthIcon /> Plano de Saúde *
-                  </label>
-                  <select className="form-select" id="planoSaude" defaultValue="" required>
-                    <option disabled value="">Selecione o Plano de Saúde</option>
-                    <option>Amil - Advanced Executivo</option>
-                    <option>Bradesco Saúde - Top Nacional</option>
-                    <option>Unimed - Alfa Premium</option>
-                    <option>Particular</option>
-                  </select>
-                </div>
-
-                <div className="mb-3">
                   <label className="form-label" htmlFor="tipoAgendamento">
                     <HealthIcon /> Tipo de Agendamento *
                   </label>
