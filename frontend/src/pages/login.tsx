@@ -6,7 +6,7 @@ import Header from '../components/header';
 import Footer from '../components/footer';
 
 // imagem logo
-const logoPath = '/logo.png';
+const logoPath = '/images/logo.png';
 
 const Login: React.FC = () => {
   const [showCadastro, setShowCadastro] = useState(false);

@@ -1,30 +1,19 @@
-body, html { /* Garante que o body também não tenha margens estranhas */
-  margin: 0;
-  padding: 0;
-  width: 100%;
-}
+/* src/styles/pages/agendamento.css */
 
 .agendamento-page-container {
-  background-color: #f0f4f8;
-  min-height: calc(100vh - 120px); /* Ajuste 120px pela altura combinada do header e footer */
-  padding-top: 40px;
-  padding-bottom: 60px;
-  display: flex;
-  align-items: flex-start; /* Para não esticar o card verticalmente */
-  justify-content: center;
-  box-sizing: border-box; /* Consistência */
+  background-color: var(--cor-fundo-claro);
+  min-height: calc(100vh - 120px);
+  padding: 40px 20px 60px 20px;
 }
 
 .agendamento-form-container {
-  background-color: transparent;
-  width: 100%; 
-  max-width: 800px; 
-  box-sizing: border-box; 
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 .agendamento-title {
   font-size: 2.4em;
-  color: #066a75 !important; /* COR TEMA */
+  color: var(--cor-principal);
   text-align: center;
   margin-bottom: 10px;
   font-weight: 700;
@@ -32,7 +21,7 @@ body, html { /* Garante que o body também não tenha margens estranhas */
 
 .agendamento-subtitle {
   font-size: 1.1em;
-  color: #4a5568;
+  color: var(--cor-texto-secundario);
   text-align: center;
   margin-bottom: 25px;
   max-width: 550px;
@@ -48,68 +37,58 @@ body, html { /* Garante que o body também não tenha margens estranhas */
   border: 1px dashed #cbd5e0;
   padding: 10px;
   border-radius: 6px;
-  background-color: #f8fafc40;
-}
-.agendamento-instructions i {
-  margin-right: 8px;
-  color: #066a75 !important; /* COR TEMA */
+  background-color: rgba(248, 250, 252, 0.25);
 }
 
-
-/* === Estilos das Abas (Tabs) === */
 .tabs {
   display: flex;
-  border-bottom: 2px solid #e2e8f0;
+  border-bottom: 2px solid var(--cor-borda);
   margin-bottom: 30px;
 }
 
 .tab {
-  padding: 14px 20px; 
+  padding: 14px 20px;
   cursor: pointer;
-  color: #4a5568 !important; /* Cor Incial */
+  color: var(--cor-texto-secundario);
   font-size: 1em;
   font-weight: 600;
-  border-bottom: 3px solid transparent !important;
+  border-bottom: 3px solid transparent;
   margin-bottom: -2px;
   transition: color 0.2s ease-in-out, border-color 0.3s ease-in-out;
   text-align: center;
   flex-grow: 1;
-  background-color: transparent !important; /* Garante que não haja fundo inesperado */
 }
 
 .tab:hover {
-  color: #07808a !important; /* COR TEMA ACCENT */
-  border-bottom-color: #07808a !important;
+  color: var(--cor-destaque);
 }
 
 .tab.active {
-  color: #066a75 !important; /* COR TEMA */
+  color: var(--cor-principal);
   font-weight: 700;
-  border-bottom-color: #066a75 !important; /* COR TEMA */
+  border-bottom-color: var(--cor-principal);
 }
 
-/* === Estilos do Card Personalizado === */
 .card-custom {
-  background: #fff !important;
+  background: var(--cor-fundo-branco);
   border-radius: 10px;
-  padding: 30px 35px; /* Reduzido um pouco o padding horizontal para formulários mais estreitos */
+  padding: 35px 40px;
   box-shadow: 0 8px 25px rgba(0, 50, 70, 0.1);
-  border: none;
+  border: 1px solid var(--cor-borda);
 }
 
 .form-section-title h4 {
   font-size: 1.3em;
-  color: #066a75 !important; /* COR TEMA */
+  color: var(--cor-principal);
   margin-bottom: 25px;
   padding-bottom: 10px;
-  border-bottom: 1px solid #e2e8f0;
+  border-bottom: 1px solid var(--cor-borda);
   font-weight: 600;
 }
 
-/* === Estilos dos Elementos de Formulário === */
 .form-label {
   font-weight: 600;
-  color: #2d3748 !important;
+  color: var(--cor-texto-escuro);
   margin-bottom: 0.6rem;
   display: flex;
   align-items: center;
@@ -117,178 +96,50 @@ body, html { /* Garante que o body também não tenha margens estranhas */
 
 .form-field-icon {
   margin-right: 10px;
-  color: #066a75 !important; /* COR TEMA */
+  color: var(--cor-principal);
   flex-shrink: 0;
-  width: 16px; /* Definir largura fixa para o ícone */
-  height: 16px; /* Definir altura fixa para o ícone */
+  width: 16px;
+  height: 16px;
 }
 
-/* Normalização para todos os campos de formulário */
+/* Normalização de campos de formulário */
 .form-select,
-.form-control,
-input[type="text"],
-input[type="date"],
-input[type="email"],
-input[type="password"],
-select {
-  display: block; /* Garante que ocupem a linha inteira */
-  width: 100% !important;
-  padding: 0.6rem 0.75rem !important; /* Padding base consistente */
-  font-size: 1em !important;
-  font-weight: 400 !important;
-  line-height: 1.5 !important; /* Consistente com Bootstrap */
-  color: #2d3748 !important;
-  background-color: #f8fafc !important;
-  background-clip: padding-box !important;
-  border: 1px solid #cbd5e0 !important;
-  border-radius: 6px !important;
-  transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out !important;
-  box-sizing: border-box !important; /* ESSENCIAL para consistência de tamanho */
-  appearance: none; /* Remove estilos padrão do navegador, especialmente para selects e date */
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  min-height: calc(1.5em + 1.2rem + 2px); /* Altura mínima para igualar */
-  height: auto; /* Permite que cresça se o conteúdo for maior, mas min-height define a base */
+.form-control {
+  font-size: 1em;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--cor-texto-escuro);
+  background-color: #f8fafc;
+  border: 1px solid #cbd5e0;
+  border-radius: 6px;
+  padding: 0.6rem 0.75rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  height: calc(1.5em + 1.2rem + 2px); /* Normaliza a altura */
+  box-sizing: border-box;
 }
-
-/* Estilo específico para a seta do select (Bootstrap like) */
-select.form-select {
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e") !important;
-  background-repeat: no-repeat !important;
-  background-position: right 0.75rem center !important;
-  background-size: 16px 12px !important;
-  padding-right: 2.25rem !important; /* Espaço para a seta */
-}
-
-/* Forçar a remoção de alguns estilos de navegador */
-input[type="date"] {
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: textfield; 
-}
-
-input[type="date"]::-webkit-calendar-picker-indicator {
-  opacity: 0.6;
-  cursor: pointer;
-}
-
 
 .form-select:focus,
-.form-control:focus,
-input[type="text"]:focus,
-input[type="date"]:focus,
-input[type="email"]:focus,
-input[type="password"]:focus,
-select:focus {
-  color: #2d3748 !important;
-  background-color: #fff !important;
-  border-color: #066a75 !important; /* COR TEMA no foco */
-  outline: 0 !important;
-  box-shadow: 0 0 0 0.25rem rgba(6, 106, 117, 0.2) !important; /* Sombra com COR TEMA */
+.form-control:focus {
+  border-color: var(--cor-principal);
+  background-color: var(--cor-fundo-branco);
+  box-shadow: 0 0 0 0.25rem rgba(6, 106, 117, 0.15);
+  outline: 0;
 }
 
-
-/* === Estilos do Botão Personalizado === */
-
-button.btn-custom,
-input[type="submit"].btn-custom { 
-  display: inline-block;
-  width: 100%; 
-  font-weight: 600 !important;
-  color: white !important;
-  text-align: center;
-  vertical-align: middle;
-  cursor: pointer;
-  user-select: none;
-  background-color: #066a75 !important; /* COR TEMA */
-  border: 1px solid #066a75 !important; /* COR TEMA */
-  padding: 0.75rem 1.5rem !important;
-  font-size: 1.1em !important;
-  border-radius: 8px !important;
-  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out, transform 0.1s ease-in-out !important;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
+button.btn-custom {
+  background-color: var(--cor-principal);
+  color: white;
+  font-weight: 600;
+  font-size: 1.1em;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  border: none;
+  transition: background-color 0.2s ease-in-out, transform 0.1s ease-in-out, box-shadow 0.2s ease;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
-button.btn-custom:hover,
-input[type="submit"].btn-custom:hover {
-  color: white !important;
-  background-color: #07808a !important; /* COR TEMA ACCENT */
-  border-color: #07808a !important; /* COR TEMA ACCENT */
+button.btn-custom:hover {
+  background-color: var(--cor-destaque);
   transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(6, 106, 117, 0.2) !important;
-}
-
-button.btn-custom:active,
-input[type="submit"].btn-custom:active {
-  color: white !important;
-  background-color: #055660 !important; /* COR TEMA DARKER */
-  border-color: #055660 !important; /* COR TEMA DARKER */
-  transform: translateY(0px);
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
-}
-
-
-/* Texto de ajuda no final do formulário */
-.form-help-text {
-  text-align: center;
-  font-size: 0.9em;
-  color: #718096 !important;
-  margin-top: 25px; 
-}
-.form-help-text a {
-  color: #066a75 !important; /* COR TEMA */
-  text-decoration: none;
-  font-weight: 500;
-}
-.form-help-text a:hover {
-  text-decoration: underline;
-  color: #07808a !important; /* COR TEMA ACCENT */
-}
-
-/* Placeholder para mensagens de feedback */
-.form-feedback {
-  margin-bottom: 20px;
-  padding: 15px;
-  border-radius: 6px;
-  font-weight: 500;
-}
-.alert-success.form-feedback {
-  background-color: #d1e7dd !important;
-  border-color: #badbcc !important;
-  color: #0f5132 !important;
-}
-.alert-danger.form-feedback {
-  background-color: #f8d7da !important;
-  border-color: #f5c2c7 !important;
-  color: #842029 !important;
-}
-
-
-/* Responsividade Adicional */
-@media (max-width: 576px) {
-  .agendamento-title {
-    font-size: 1.9em;
-  }
-  .agendamento-subtitle {
-    font-size: 1em;
-    margin-bottom: 20px;
-  }
-  .agendamento-instructions {
-    margin-bottom: 20px;
-    font-size: 0.85em;
-  }
-  .tab {
-    padding: 12px 10px;
-    font-size: 0.9em;
-  }
-  .card-custom {
-    padding: 25px 20px;
-  }
-  .form-section-title h4 {
-    font-size: 1.15em;
-  }
-  button.btn-custom, input[type="submit"].btn-custom {
-    font-size: 1em !important;
-    padding: 0.65rem 1rem !important;
-  }
+  box-shadow: 0 4px 8px rgba(6, 106, 117, 0.2);
 }

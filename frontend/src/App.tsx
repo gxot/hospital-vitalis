@@ -5,6 +5,9 @@ import Inicio from './pages/inicio';
 import Agendamento from './pages/agendamento';
 import Login from './pages/login';
 import Sobre from './pages/sobre';
+import AlterarDadosMedico from './pages/alterardadosmedico';
+import AlterarDadosPaciente from './pages/alterardadospaciente';
+import AlterarSenha from './pages/alterarsenha';
 
 function App() {
   return (
@@ -14,6 +17,9 @@ function App() {
         <Route path="/agendamento" element={<Agendamento />} />
         <Route path="/login" element={<Login />} />
         <Route path="/sobre" element={<Sobre />} />
+        <Route path="/alterardadosmedico" element={<AlterarDadosMedico />} />
+        <Route path="/alterardadospaciente" element={<AlterarDadosPaciente />} />
+        <Route path="/alterarsenha" element={<AlterarSenha />} />
       </Routes>
     </Router>
   );

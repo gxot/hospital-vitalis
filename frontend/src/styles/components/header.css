@@ -1,111 +1,117 @@
-/* === header.css === */
-
 .site-header {
-  background-color: #066a75; /* Cor principal do tema Hospital Vitalis */
-  padding: 30px 0; /* Padding vertical ajustado, já que não há logo para equilibrar altura */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra sutil */
-  width: 100%;
-  z-index: 1000; /* Garante que o header fique acima de outros conteúdos */
-  top: 0;
-  /* position: sticky; */ /* Descomente se quiser o header fixo no topo ao rolar */
+  background-color: #066a75;
+  padding: 0.5rem 1rem;
+  position: relative;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .header-container {
-  max-width: 1200px; /* Largura máxima do conteúdo do header */
-  margin: 0 auto; /* Centraliza o container na página */
-  padding: 0 20px; /* Espaçamento lateral dentro do container */
   display: flex;
-  justify-content: center; /* Centraliza o .main-nav */
-  align-items: center; /* Alinha verticalmente o .main-nav */
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
+/* Navegação Principal */
 .main-nav ul {
-  list-style: none; /* Remove marcadores da lista */
-  margin: 0;
+  display: flex;
+  gap: 1rem;
+  list-style: none;
   padding: 0;
-  display: flex; /* Alinha os itens do menu horizontalmente */
-  justify-content: center; /* Garante que os LIs estejam centralizados dentro do UL, se o UL for mais largo */
+  margin: 0;
 }
 
-.main-nav li {
-  margin-left: 15px; /* Espaçamento entre os itens do menu*/
-  margin-right: 15px; /* Adicionado para espaçamento equilibrado */
-}
-
-.main-nav li:first-child {
-  margin-left: 0;
-}
-.main-nav li:last-child {
-  margin-right: 0;
-}
-
-
-.nav-link {
-  color: #f0f8ff; /* Cor de texto clara para contraste com o fundo escuro */
+.nav-link { 
   text-decoration: none;
-  padding: 10px 15px; /* Padding para melhor área de clique */
-  display: block;
-  font-size: 1em; /* Tamanho da fonte ajustável */
-  font-weight: 500; /* Peso da fonte */
-  border-radius: 4px; /* Bordas levemente arredondadas */
-  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
-  position: relative; /* Para o pseudo-elemento ::after */
+  color: #f0f8ff;
+  font-weight: 500;
+  padding: 0.5rem 0.75rem;
+  transition: color 0.3s, background-color 0.3s;
 }
 
-.nav-link:hover {
-  background-color: #07808a; /* Cor de hover (tom mais claro do teal) */
-  color: #ffffff;
+  .nav-link:hover { background-color: #07808a; color: #ffffff; }
+.nav-link.active { color: #ffffff; font-weight: 700; }
+.nav-link.active::after { content: ''; position: absolute; bottom: -2px; left: 50%; transform: translateX(-50%); width: 60%; height: 2px; background-color: #ffffff; border-radius: 1px; }
+
+/* === Estilos para os Menus de Perfil Dropdown === */
+.profile-menu {
+  position: relative;
+  flex-shrink: 0;
 }
 
-/* Estilo para o link ativo usando NavLink */
-.nav-link.active {
-  color: #ffffff;
-  font-weight: 700; /* Destaque para o link ativo */
+.profile-button {
+  background-color: transparent;
+  border: 2px solid transparent;
+  border-radius: 50px;
+  padding: 4px 12px 4px 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: background-color 0.2s, border-color 0.2s;
+  color: white;
 }
+.profile-button:hover { background-color: #07808a; }
+.profile-button:focus, .profile-button:focus-visible { outline: none; border-color: #80cbc4; }
+.profile-image { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; margin-right: 10px; }
+.profile-text { font-weight: 600; font-size: 1em; margin-right: 8px; }
+.profile-arrow { font-size: 0.7em; transition: transform 0.2s ease; }
+.profile-button[aria-expanded="true"] .profile-arrow { transform: rotate(180deg); }
 
-/* Linha sutil abaixo do link ativo */
-.nav-link.active::after {
-  content: '';
+/* Dropdown */
+.dropdown-menu- {
   position: absolute;
-  bottom: -2px; /* Posição da linha um pouco abaixo do link */
-  left: 50%;
-  transform: translateX(-50%);
-  width: 60%; /* Largura da linha em relação ao link */
-  height: 2px;
-  background-color: #ffffff; /* Cor da linha */
-  border-radius: 1px;
+  top: calc(100% + 8px);
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+  padding: 8px 0;
+  min-width: 220px;
+  z-index: 1001; 
+  
+  /* Estado inicial (escondido) */
+  opacity: 0;
+  transform: translateY(-10px);
+  pointer-events: none;
+  visibility: hidden;
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0s 0.2s;
 }
 
+/* Alinhamento dos menus */
+.header-container > div:first-child .dropdown-menu- { left: 0; }
+.header-container > div:last-child .dropdown-menu- { right: 0; }
 
-/* Responsividade Simples para o Header */
+/* Estado aberto (visível) */
+.dropdown-menu-open {
+  position: absolute;
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+  visibility: visible;
+  transition-delay: 0s;
+  background-color: white;
+  z-index: 9999;
+}
+
+/* Itens do Dropdown */
+.dropdown-menu- ul { list-style: none; margin: 0; padding: 0; }
+.dropdown-item { display: block; width: 100%; padding: 10px 20px; color: #333; text-decoration: none; font-size: 0.95em; font-weight: 500; transition: background-color 0.2s, color 0.2s; box-sizing: border-box; }
+.dropdown-item:hover { background-color: #f0f4f8; color: #066a75; }
+.dropdown-divider { height: 1px; background-color: #e9ecef; margin: 8px 0; border: 0; }
+.dropdown-item.logout { color: #d9534f; font-weight: bold; }
+.dropdown-item.logout:hover { background-color: #f2dede; color: #a94442; }
+
+/* Responsividade */
+@media (max-width: 900px) {
+  .main-nav { display: none; }
+}
 @media (max-width: 768px) {
-  .site-header {
-    padding: 10px 0; /* Padding menor em telas pequenas */
-  }
-  .header-container {
-    padding: 0 15px; /* Ajusta padding do container */
-  }
-
-  .main-nav li {
-    margin-left: 8px; 
-    margin-right: 8px;
-  }
-
-  .nav-link {
-    padding: 8px 10px;
-    font-size: 0.95em;
-  }
-  .nav-link.active::after {
-    bottom: 0px;
-  }
+  .header-container { flex-wrap: wrap; }
+  .profile-text { display: none; }
+  .profile-button { padding: 4px; }
 }
 
-@media (max-width: 480px) {
-  .main-nav ul {
-    flex-wrap: wrap; /* Permite que os links quebrem linha se não couberem */
-    justify-content: center; /* Mantém centralizado quando quebra linha */
-  }
-  .main-nav li {
-    margin: 5px 8px; /* Espaçamento para links que quebram linha */
-  }
+.header-container {
+  overflow: visible;
 }

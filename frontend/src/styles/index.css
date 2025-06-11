@@ -1,13 +1,33 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* Estilos globais para toda a aplicação */
+
+:root {
+  /* Definição das cores tema do site */
+  --cor-principal: #066a75;
+  --cor-principal-escura: #055660;
+  --cor-destaque: #07808a;
+  --cor-fundo-claro: #f0f4f8;
+  --cor-fundo-branco: #ffffff;
+  --cor-texto-claro: #f0f8ff;
+  --cor-texto-escuro: #2d3748;
+  --cor-texto-secundario: #4a5568;
+  --cor-borda: #e2e8f0;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--cor-fundo-branco);
+  color: var(--cor-texto-escuro);
 }
+
+a {
+  color: var(--cor-principal);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--cor-destaque);
+}
+

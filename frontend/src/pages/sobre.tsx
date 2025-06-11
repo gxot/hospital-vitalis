@@ -5,9 +5,9 @@ import Header from '../components/header';
 import Footer from '../components/footer';
 
 // Caminhos para as imagens na pasta 'public'
-const hospitalFacadeImage = '/fachada.png';        
-const hospitalInfraImage = '/infraestrutura.png'; 
-const hospitalTeamImage = '/equipe.png';        
+const hospitalFacadeImage = '/images/fachada.png';        
+const hospitalInfraImage = '/images/infraestrutura.png'; 
+const hospitalTeamImage = '/images/equipe.png';        
 
 const Sobre: React.FC = () => {
   return (
