@@ -23,7 +23,7 @@ CREATE TABLE IF NOT EXISTS local_atendimento
 CREATE TABLE IF NOT EXISTS medico
 (
     id                   SERIAL PRIMARY KEY,
-    nome                 VARCHAR(100) NOT NULL,
+    nome_medico          VARCHAR(100) NOT NULL,
     tipo_consulta_id     INTEGER      NOT NULL,
     local_atendimento_id INTEGER      NOT NULL,
     CONSTRAINT fk_medico_tipo_consulta FOREIGN KEY (tipo_consulta_id) REFERENCES tipo_consulta (id),

@@ -18,9 +18,3 @@ VALUES ('Clínica Central'),
        ('Hospital São João'),
        ('Unidade Básica de Saúde')
     ON CONFLICT (nome) DO NOTHING;
-
--- Inserir médicos
-INSERT INTO medico (nome, tipo_consulta_id, local_atendimento_id)
-VALUES ('Dr. João Silva', 1, 1),
-       ('Dra. Maria Souza', 2, 2),
-       ('Dr. Carlos Pereira', 3, 3);

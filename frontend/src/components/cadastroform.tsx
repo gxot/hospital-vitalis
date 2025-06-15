@@ -1,5 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom'; // Importar Link para navegação
+import { Link } from 'react-router-dom';
+import PlanoSaudeSelect from '../functions/planosdesaude';
 
 type CadastroProps = {
     setShowCadastro: React.Dispatch<React.SetStateAction<boolean>>;
@@ -70,16 +71,7 @@ export default function CadastroForm ({ setShowCadastro }: CadastroProps ) {
               </div>
 
               <div className="auth-form-group">
-                  <label className="form-label" htmlFor="planoSaude">
-                   Plano de Saúde *
-                  </label>
-                  <select className="form-select" id="planoSaude" defaultValue="" required>
-                    <option disabled value="">Selecione o Plano de Saúde</option>
-                    <option>Amil - Advanced Executivo</option>
-                    <option>Bradesco Saúde - Top Nacional</option>
-                    <option>Unimed - Alfa Premium</option>
-                    <option>Particular</option>
-                  </select>
+                  <PlanoSaudeSelect />
               </div>
 
               <div className="auth-form-group">
