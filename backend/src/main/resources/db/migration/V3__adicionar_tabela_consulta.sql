@@ -1,8 +1,8 @@
 -- Criar tabela consulta (será criada pelo JPA, mas definindo constraints)
 CREATE TABLE IF NOT EXISTS consulta (
     id BIGSERIAL PRIMARY KEY,
-    tipo_consulta_id INTEGER NOT NULL,
-    local_atendimento_id INTEGER NOT NULL,
+    tipo_consulta_id BIGINT NOT NULL,
+    local_atendimento_id BIGINT NOT NULL,
     data_consulta DATE NOT NULL,
 
     CONSTRAINT fk_consulta_tipo_consulta

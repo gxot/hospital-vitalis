@@ -4,7 +4,7 @@ CREATE TABLE IF NOT EXISTS paciente (
     nome_paciente VARCHAR(255) NOT NULL,
     cpf_paciente VARCHAR(14) NOT NULL UNIQUE,
     email_paciente VARCHAR(255) NOT NULL UNIQUE,
-    plano_de_saude_id INTEGER NOT NULL,
+    plano_de_saude_id BIGINT NOT NULL,
     data_nascimento DATE NOT NULL,
 
     -- Foreign Key para plano_saude
