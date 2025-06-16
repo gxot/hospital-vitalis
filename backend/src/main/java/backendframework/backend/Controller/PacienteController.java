@@ -11,11 +11,12 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/pacientes")
 public class PacienteController {
 
-    private PacienteService pacienteService;
-    private PacienteMapper pacienteMapper = PacienteMapper.INSTANCE;
+    private final PacienteService pacienteService;
+    private final PacienteMapper pacienteMapper = PacienteMapper.INSTANCE;
 
     @Autowired
     public PacienteController(PacienteService pacienteService) {
+
         this.pacienteService = pacienteService;
     }
     @PostMapping("/criar_paciente")

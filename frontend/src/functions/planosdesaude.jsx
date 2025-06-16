@@ -65,14 +65,15 @@ export default function PlanoSaudeSelect() {
           <option disabled value="">
             Selecione o Plano de Saúde
           </option>
+          <option value="particular">Particular</option>
           {planos.length === 0 ? (
             <option disabled value="">
               Nenhum plano disponível
             </option>
           ) : (
-            planos.map((plano, index) => (
-              <option key={plano.id || index} value={plano.nome || plano}>
-                {plano.nome || plano}
+            planos.map(plano => (
+              <option key={plano.id} value={plano.id}>
+                {plano.nome}
               </option>
             ))
           )}

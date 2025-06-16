@@ -7,19 +7,51 @@ type CadastroProps = {
 }
 
 export default function CadastroForm ({ setShowCadastro }: CadastroProps ) {
-    
-    const handleSubmit = (event: React.FormEvent) => {
+    const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        // Adicione aqui a lógica de submissão do formulário de cadastro
-        console.log('Formulário de cadastro enviado');
-        // Exemplo: após o cadastro bem-sucedido, redirecionar para o login
-        // setShowCadastro(false);
+
+        const form = event.currentTarget;
+        const formData = new FormData(form);
+
+        // Monta o objeto com os dados do formulário
+        const data = {
+            nome: formData.get('nome_cad'),
+            cpf: formData.get('numero_cpf'),
+            email: formData.get('email_cad'),
+            dataNascimento: formData.get('data_nascimento'),
+            plano_de_saude_id: Number(formData.get('planoSaude')),
+            senha: formData.get('senha_cad'),
+        };
+        
+        console.log('data:', data);
+
+        try {
+            const response = await fetch('http://localhost:8080/pacientes/criar_paciente', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            });
+
+            if (response.ok) {
+                // Sucesso! Faça o que quiser aqui (ex: redirecionar, mostrar mensagem, etc)
+                alert('Cadastro realizado com sucesso!');
+                setShowCadastro(false);
+            } else {
+                // Erro do backend
+                const error = await response.text();
+                alert('Erro ao cadastrar: ' + error);
+            }
+        } catch (err) {
+            alert('Erro de conexão com o servidor.');
+        }
     };
 
     return (
         <div className="cadastro-form-content"> 
-            <form method="post" action="" onSubmit={handleSubmit}> {/* onSubmit */}
-              <h2 className="form-title-within-card">Crie sua Conta</h2> {/* Título do formulário */}
+            <form method="post" action="" onSubmit={handleSubmit}>
+              <h2 className="form-title-within-card">Crie sua Conta</h2>
 
               <div className="auth-form-group">
                 <label htmlFor="nome_cad" className="auth-label">Nome Completo *</label>
@@ -42,7 +74,7 @@ export default function CadastroForm ({ setShowCadastro }: CadastroProps ) {
                   type="text"  
                   placeholder="Apenas números" 
                   className="auth-input" 
-                  pattern="\d{11}" // Validação simples para 11 dígitos
+                  pattern="\d{11}"
                   title="Digite os 11 dígitos do seu CPF, sem pontos ou traços."
                 />
               </div>
@@ -99,7 +131,7 @@ export default function CadastroForm ({ setShowCadastro }: CadastroProps ) {
                 />
               </div>
 
-              <div className="auth-form-group"> {/* Envolvendo o botão para margem consistente */}
+              <div className="auth-form-group">
                 <button type="submit" className="auth-button">
                   Cadastrar
                 </button>
@@ -119,7 +151,6 @@ export default function CadastroForm ({ setShowCadastro }: CadastroProps ) {
               </p>
             </form>
 
-            {/* Botão "Voltar para a página inicial" - Estilizado e usando Link */}
             <div className="auth-back-to-home">
               <Link to="/" className="btn-secondary-auth">
                 Voltar para a página inicial

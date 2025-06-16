@@ -30,5 +30,8 @@ public class PacienteDTO {
     private String email;
 
     @NotNull
+    private Long plano_de_saude_id;
+
+    @NotNull
     private LocalDate dataNascimento;
 }

@@ -29,7 +29,7 @@ public class Paciente {
     private String email;
 
     @Column(name = "plano_de_saude_id", nullable = false)
-    private Integer planoDeSaudeId;
+    private Long plano_de_saude_id;
 
     @Column(nullable = false)
     private LocalDate dataNascimento;
