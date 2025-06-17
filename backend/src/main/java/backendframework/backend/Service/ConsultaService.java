@@ -106,4 +106,14 @@ public class ConsultaService {
         consultaRepository.deleteById(id);
         return true;
     }
+
+    public List<LocalAtendimentoDTO> fetchLocaisAtendimento() {
+        String sql = "SELECT id, nome FROM local_atendimento";
+        return jdbcTemplate.query(sql, (rs, rowNum) ->
+                LocalAtendimentoDTO.builder()
+                        .id(rs.getLong("id"))
+                        .nome(rs.getString("nome"))
+                        .build()
+        );
+    }
 }

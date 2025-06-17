@@ -48,4 +48,13 @@ public class PacienteDetailsController {
         dto.setPlanoSaude(planoSaude);
         return dto;
     }
+
+    @GetMapping("/isAdmin")
+    public boolean isAdmin(Authentication authentication) {
+        String email = authentication.getName();
+        if (email.equals("admin@admin.com")) {
+            return true;
+        }
+        return false;
+    }
 }

@@ -19,8 +19,8 @@ public class MedicoDTO {
     private String nome;
 
     @NotBlank
-    private Integer tipo_consulta_id;
+    private Long tipo_consulta_id;
 
     @NotBlank
-    private Integer local_atendimento_id;
+    private Long local_atendimento_id;
 }

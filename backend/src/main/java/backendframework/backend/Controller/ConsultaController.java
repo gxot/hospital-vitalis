@@ -32,6 +32,11 @@ public class ConsultaController {
         return consultaService.fetchTipoAtendimento();
     }
 
+    @GetMapping("/locais_atendimento")
+    public List<LocalAtendimentoDTO> fetchLocais() {
+        return consultaService.fetchLocaisAtendimento();
+    }
+
     @GetMapping("/locais")
     public List<LocalAtendimentoDTO> fetchLocais(@RequestParam Long tipo) {
         return consultaService.fetchLocais(tipo);

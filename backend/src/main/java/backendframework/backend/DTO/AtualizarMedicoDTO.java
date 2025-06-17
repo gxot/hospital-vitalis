@@ -9,11 +9,8 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class MedicoGetDTO {
-    private Long id;
+public class AtualizarMedicoDTO {
     private String nome;
-    private String tipoAtendimento;
-    private String localAtendimento;
-    private Long tipo_consulta_id;
-    private Long local_atendimento_id;
+    private Long tipoAtendimento;
+    private Long localAtendimento;
 }

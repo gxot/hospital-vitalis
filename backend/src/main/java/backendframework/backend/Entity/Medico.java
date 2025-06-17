@@ -6,8 +6,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDate;
-
 @Entity
 @Data
 @Builder
@@ -16,16 +14,16 @@ import java.time.LocalDate;
 public class Medico {
 
     @Id
-    @Column
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "nome_medico", nullable = false)
     private String nome;
 
     @Column(name = "tipo_consulta_id", nullable = false)
-    private Integer tipo_consulta_id;
+    private Long tipo_consulta_id;
 
     @Column(name = "local_atendimento_id", nullable = false)
-    private Integer local_atendimento_id;
+    private Long local_atendimento_id;
 
 }
