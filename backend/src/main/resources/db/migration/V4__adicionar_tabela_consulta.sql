@@ -8,10 +8,12 @@ CREATE TABLE IF NOT EXISTS consulta (
     data_consulta DATE NOT NULL,
 
     CONSTRAINT fk_consulta_medico
-    FOREIGN KEY (medico_id) REFERENCES medico(id),
+    FOREIGN KEY (medico_id) REFERENCES medico(id)
+    ON DELETE CASCADE,
 
     CONSTRAINT fk_consulta_paciente
-    FOREIGN KEY (paciente_id) REFERENCES paciente(id),
+    FOREIGN KEY (paciente_id) REFERENCES paciente(id)
+    ON DELETE CASCADE,
 
     CONSTRAINT fk_consulta_tipo_consulta
     FOREIGN KEY (tipo_consulta_id) REFERENCES tipo_consulta(id),

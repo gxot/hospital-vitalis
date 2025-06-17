@@ -57,6 +57,24 @@ const AlterarDadosPaciente: React.FC = () => {
       .catch(() => window.alert('Erro de conexão com o servidor!'));
   };
 
+  // Função para deletar conta
+  const handleDeleteAccount = () => {
+    if (!window.confirm('Tem certeza que deseja deletar sua conta? Esta ação não pode ser desfeita.')) return;
+    fetch('http://localhost:8080/pacientes/deletar_conta', {
+      method: 'DELETE',
+      credentials: 'include'
+    })
+      .then(res => {
+        if (res.ok) {
+          window.alert('Conta deletada com sucesso!');
+          navigate('/');
+        } else {
+          window.alert('Erro ao deletar conta!');
+        }
+      })
+      .catch(() => window.alert('Erro de conexão com o servidor!'));
+  };
+
   return (
     <>
       <Header />
@@ -134,6 +152,17 @@ const AlterarDadosPaciente: React.FC = () => {
               <button type="submit" className="form-button">Salvar Alterações</button>
             </div>
           </form>
+
+          <div className="form-group" style={{ marginTop: 24, textAlign: 'center' }}>
+            <button
+              type="button"
+              className="form-button"
+              style={{ backgroundColor: '#e53e3e' }}
+              onClick={handleDeleteAccount}
+            >
+              Deletar Conta
+            </button>
+          </div>
         </div>
       </div>
       <Footer />

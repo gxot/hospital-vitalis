@@ -55,5 +55,13 @@ public class PacienteController {
         return false;
     }
 
+    @DeleteMapping("/deletar_conta")
+    public boolean deletarConta(Authentication authentication) {
+        if(pacienteService.deletarConta(authentication.getName())) {
+            return true;
+        }
+        return false;
+    }
+
 
 }

@@ -98,4 +98,10 @@ public class PacienteService {
         return false;
     }
 
+    public boolean deletarConta(String email) {
+        Paciente paciente = pacienteDetailsService.loadUserByUsername(email).getPaciente();
+        pacienteRepository.delete(paciente);
+        return true;
+    }
+
 }
