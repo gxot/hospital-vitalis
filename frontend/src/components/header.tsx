@@ -69,7 +69,12 @@ export default function Header() {
                                     </li>
                                     <li>
                                         <Link to="/agendamento" className="dropdown-item">
-                                            Meus agendamentos
+                                            Agendar Consulta
+                                        </Link>
+                                    </li>
+                                    <li>
+                                        <Link to="/meusagendamentos" className="dropdown-item">
+                                            Meus Agendamentos
                                         </Link>
                                     </li>
                                     <li>

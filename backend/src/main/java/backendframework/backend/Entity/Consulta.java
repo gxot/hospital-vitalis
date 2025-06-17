@@ -30,6 +30,9 @@ public class Consulta {
     @Column(name = "medico_id", nullable = false)
     private Long medicoId;
 
+    @Column(name = "paciente_id", nullable = false)
+    private Long pacienteId;
+
     @Column(name = "data_consulta", nullable = false)
     private LocalDate dataConsulta;
 }

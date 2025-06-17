@@ -1,28 +1,56 @@
 import React, { useState } from 'react';
 import Header from '../components/header';
 import Footer from '../components/footer';
-import '../styles/pages/form-page.css'; // Reutilizando o mesmo CSS
+import '../styles/pages/form-page.css';
 
 const AlterarSenha: React.FC = () => {
   const [senhaAtual, setSenhaAtual] = useState('');
   const [novaSenha, setNovaSenha] = useState('');
   const [confirmaSenha, setConfirmaSenha] = useState('');
+  const [mensagem, setMensagem] = useState<{ tipo: 'erro' | 'sucesso'; texto: string } | null>(null);
 
-  const handleSubmit = (event: React.FormEvent) => {
+  const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
+    setMensagem(null);
+
     if (novaSenha !== confirmaSenha) {
-      alert('A nova senha e a confirmação não são iguais!');
+      setMensagem({ tipo: 'erro', texto: 'A nova senha e a confirmação não são iguais!' });
       return;
     }
     if (novaSenha.length < 6) {
-      alert('A nova senha deve ter no mínimo 6 caracteres.');
+      setMensagem({ tipo: 'erro', texto: 'A nova senha deve ter no mínimo 6 caracteres.' });
       return;
     }
-    alert('Senha alterada com sucesso!');
-    // Limpar campos após submissão
-    setSenhaAtual('');
-    setNovaSenha('');
-    setConfirmaSenha('');
+
+    // Checa a senha atual
+    const checar = await fetch('http://localhost:8080/pacientes/checar_senha', {
+      method: 'POST',
+      credentials: 'include',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ senhaAtual })
+    }).then(res => res.json());
+
+    if (!checar || checar !== true) {
+      setMensagem({ tipo: 'erro', texto: 'Senha atual incorreta.' });
+      return;
+    }
+
+    // Atualiza a senha
+    const alterar = await fetch('http://localhost:8080/pacientes/atualizar_senha', {
+      method: 'PUT',
+      credentials: 'include',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ novaSenha })
+    });
+
+    if (alterar.ok) {
+      setMensagem({ tipo: 'sucesso', texto: 'Senha alterada com sucesso!' });
+      setSenhaAtual('');
+      setNovaSenha('');
+      setConfirmaSenha('');
+    } else {
+      setMensagem({ tipo: 'erro', texto: 'Erro ao alterar a senha.' });
+    }
   };
 
   return (
@@ -71,6 +99,15 @@ const AlterarSenha: React.FC = () => {
                 required
               />
             </div>
+
+            {mensagem && (
+              <div
+                className={`alert ${mensagem.tipo === 'sucesso' ? 'alert-success' : 'alert-danger'} mt-3`}
+                role="alert"
+              >
+                {mensagem.texto}
+              </div>
+            )}
 
             <div className="form-group">
               <button type="submit" className="form-button">Alterar Senha</button>

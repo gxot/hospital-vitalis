@@ -27,6 +27,8 @@ public class ConsultaDTO {
     @NotNull
     private Long medicoId;
 
+    private Long pacienteId;
+
     @NotNull
     private LocalDate dataConsulta;
 }

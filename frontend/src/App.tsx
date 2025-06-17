@@ -8,6 +8,7 @@ import Sobre from './pages/sobre';
 import AlterarDadosMedico from './pages/alterardadosmedico';
 import AlterarDadosPaciente from './pages/alterardadospaciente';
 import AlterarSenha from './pages/alterarsenha';
+import ConsultasMarcadas from './pages/meusagendamentos';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Inicio />} />
         <Route path="/agendamento" element={<Agendamento />} />
+        <Route path="/meusagendamentos" element={<ConsultasMarcadas />} />
         <Route path="/login" element={<Login />} />
         <Route path="/sobre" element={<Sobre />} />
         <Route path="/alterardadosmedico" element={<AlterarDadosMedico />} />

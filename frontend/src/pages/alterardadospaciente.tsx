@@ -1,20 +1,60 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Header from '../components/header';
 import Footer from '../components/footer';
-import '../styles/pages/form-page.css'; // Novo CSS compartilhado
+import '../styles/pages/form-page.css';
+import { useNavigate } from 'react-router-dom';
 
 const AlterarDadosPaciente: React.FC = () => {
-  // Simulação de dados do paciente que seriam carregados da API
-  const [nome, setNome] = useState('Eduardo Erthal');
-  const [cpf] = useState('123.456.789-00'); // CPF geralmente não é editável
-  const [email, setEmail] = useState('eduardo.erthal@email.com');
-  const [dataNascimento, setDataNascimento] = useState('1990-05-15');
-  const [planoSaude, setPlanoSaude] = useState('Unimed - Alfa Premium');
+  const [nome, setNome] = useState('');
+  const [cpf, setCpf] = useState('');
+  const [email, setEmail] = useState('');
+  const [dataNascimento, setDataNascimento] = useState('');
+  const [planoSaude, setPlanoSaude] = useState('');
+  const [planos, setPlanos] = useState<{ id: number, nome: string }[]>([]);
+  const navigate = useNavigate();
+
+  // Carrega dados do paciente ao montar
+  useEffect(() => {
+    fetch('http://localhost:8080/details/attuserinfo', { credentials: 'include' })
+      .then(res => res.json())
+      .then(data => {
+        setNome(data.nome || '');
+        setCpf(data.cpf || '');
+        setEmail(data.email || '');
+        setDataNascimento(data.dataNascimento || '');
+        setPlanoSaude(data.planoSaude || '');
+      });
+  }, []);
+
+  // Carrega planos de saúde ao montar
+  useEffect(() => {
+    fetch('http://localhost:8080/planosdesaude/listar_planos_de_saude', { credentials: 'include' })
+      .then(res => res.json())
+      .then(data => setPlanos(data));
+  }, []);
 
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
-    // Lógica para enviar os dados atualizados para a API
-    alert('Dados atualizados com sucesso!');
+    fetch('http://localhost:8080/pacientes/atualizar_paciente', {
+      method: 'PUT',
+      credentials: 'include',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        nome,
+        email,
+        dataNascimento,
+        planoSaude
+      })
+    })
+      .then(res => {
+        if (res.ok) {
+          window.alert('Dados atualizados com sucesso!');
+          navigate('/');
+        } else {
+          window.alert('Erro ao atualizar dados!');
+        }
+      })
+      .catch(() => window.alert('Erro de conexão com o servidor!'));
   };
 
   return (
@@ -45,7 +85,7 @@ const AlterarDadosPaciente: React.FC = () => {
                 type="text"
                 className="form-input"
                 value={cpf}
-                disabled // CPF não pode ser alterado
+                disabled
               />
             </div>
 
@@ -77,14 +117,16 @@ const AlterarDadosPaciente: React.FC = () => {
               <label htmlFor="plano_saude" className="form-label">Plano de Saúde</label>
               <select 
                 id="plano_saude"
-                className="form-input" // Usando a mesma classe para consistência
+                className="form-input"
                 value={planoSaude}
                 onChange={(e) => setPlanoSaude(e.target.value)}
               >
-                <option>Amil - Advanced Executivo</option>
-                <option>Bradesco Saúde - Top Nacional</option>
-                <option>Unimed - Alfa Premium</option>
-                <option>Particular</option>
+                {planos.map(plano => (
+                  <option key={plano.id} value={plano.id}>
+                    {plano.nome}
+                  </option>
+                ))}
+                <option value="Particular">Particular</option>
               </select>
             </div>
 

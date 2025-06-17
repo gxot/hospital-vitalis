@@ -1,14 +1,14 @@
 package backendframework.backend.Controller;
 
-import backendframework.backend.DTO.ConsultaDTO;
-import backendframework.backend.DTO.LocalAtendimentoDTO;
-import backendframework.backend.DTO.MedicoGetDTO;
-import backendframework.backend.DTO.TipoAtendimentoDTO;
+import backendframework.backend.DTO.*;
 import backendframework.backend.Entity.Consulta;
+import backendframework.backend.Entity.Paciente;
 import backendframework.backend.Mapper.ConsultaMapper;
+import backendframework.backend.Security.PacienteDetailsService;
 import backendframework.backend.Service.ConsultaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -19,15 +19,16 @@ import java.util.List;
 public class ConsultaController {
 
     private ConsultaService consultaService;
+    private PacienteDetailsService pacienteDetailsService;
     private ConsultaMapper consultaMapper = ConsultaMapper.INSTANCE;
     @Autowired
-    public ConsultaController(ConsultaService consultaService) {
+    public ConsultaController(ConsultaService consultaService, PacienteDetailsService pacienteDetailsService) {
+        this.pacienteDetailsService = pacienteDetailsService;
         this.consultaService = consultaService;
     }
 
     @GetMapping("/tipo_atendimento")
     public List<TipoAtendimentoDTO> fetchTipoAtendimento() {
-        System.out.println(consultaService.fetchTipoAtendimento());
         return consultaService.fetchTipoAtendimento();
     }
 
@@ -43,15 +44,30 @@ public class ConsultaController {
     }
 
     @PostMapping("/agendar")
-    public ResponseEntity<?> agendarConsulta(@RequestBody ConsultaDTO consultaDTO) {
-        System.out.println(consultaDTO.toString());
+    public ResponseEntity<?> agendarConsulta(@RequestBody ConsultaDTO consultaDTO, Authentication authentication) {
+        Paciente paciente = pacienteDetailsService.loadUserByUsername(authentication.getName()).getPaciente();
+        consultaDTO.setPacienteId(paciente.getId());
+        System.out.println(consultaDTO);
         Consulta consulta = consultaMapper.consultaDTOToConsulta(consultaDTO);
-        System.out.println(consulta.toString());
+        System.out.println(consulta);
         boolean sucesso = consultaService.agendarConsulta(consulta);
-
         if (sucesso) {
             return ResponseEntity.ok().build();
         }
         return ResponseEntity.badRequest().build();
+    }
+
+    @GetMapping("/agendamentos")
+    public List<ConsultaMarcadaDTO> fetchConsultasMarcadas(Authentication authentication) {
+        return consultaService.fetchConsultasMarcadas(authentication.getName());
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<?> deletarConsulta(@PathVariable Long id) {
+        boolean sucesso = consultaService.deletarConsulta(id);
+        if (sucesso) {
+            return ResponseEntity.ok().build();
+        }
+        return ResponseEntity.status(403).body("Não autorizado ou consulta não encontrada.");
     }
 }
