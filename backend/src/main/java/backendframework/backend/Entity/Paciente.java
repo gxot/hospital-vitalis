@@ -34,4 +34,7 @@ public class Paciente {
     @Column(nullable = false)
     private LocalDate dataNascimento;
 
+    @Column(name = "senha", nullable = false)
+    private String senha;
+
 }

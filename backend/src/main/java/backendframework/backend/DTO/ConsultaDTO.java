@@ -18,14 +18,14 @@ public class ConsultaDTO {
 
     private Long id;
 
-    @NotBlank
-    private int idPlanoDeSaude;
+    @NotNull
+    private Long tipoId;
 
-    @NotBlank
-    private int idAgendamento;
+    @NotNull
+    private Long localId;
 
-    @NotBlank
-    private int idLocal;
+    @NotNull
+    private Long medicoId;
 
     @NotNull
     private LocalDate dataConsulta;

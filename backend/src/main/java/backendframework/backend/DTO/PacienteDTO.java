@@ -34,4 +34,8 @@ public class PacienteDTO {
 
     @NotNull
     private LocalDate dataNascimento;
+
+    @NotBlank
+    @Size(min = 6, max = 50)
+    private String senha;
 }

@@ -6,6 +6,7 @@ CREATE TABLE IF NOT EXISTS paciente (
     email_paciente VARCHAR(255) NOT NULL UNIQUE,
     plano_de_saude_id BIGINT NOT NULL,
     data_nascimento DATE NOT NULL,
+    senha VARCHAR(50) NOT NULL,
 
     -- Foreign Key para plano_saude
     CONSTRAINT fk_paciente_plano_saude

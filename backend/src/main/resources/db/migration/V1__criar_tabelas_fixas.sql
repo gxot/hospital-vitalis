@@ -15,8 +15,11 @@ CREATE TABLE IF NOT EXISTS plano_saude
 -- Tabela: local_atendimento
 CREATE TABLE IF NOT EXISTS local_atendimento
 (
-    id   BIGSERIAL PRIMARY KEY,
-    nome VARCHAR(100) NOT NULL UNIQUE
+    id                BIGSERIAL    PRIMARY KEY,
+    nome              VARCHAR(100) NOT NULL UNIQUE,
+    tipo_consulta_id  BIGINT NOT NULL,
+
+    CONSTRAINT fk_local_atendimento_tipo_consulta FOREIGN KEY (tipo_consulta_id) REFERENCES tipo_consulta (id)
 );
 
 -- Tabela: medico

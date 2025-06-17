@@ -22,10 +22,13 @@ public class Consulta {
     private Long id;
 
     @Column(name = "tipo_consulta_id", nullable = false)
-    private Integer tipoConsultaId;
+    private Long tipoId;
 
     @Column(name = "local_atendimento_id", nullable = false)
-    private Integer localAtendimentoId;
+    private Long localId;
+
+    @Column(name = "medico_id", nullable = false)
+    private Long medicoId;
 
     @Column(name = "data_consulta", nullable = false)
     private LocalDate dataConsulta;
