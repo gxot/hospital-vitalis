@@ -59,7 +59,6 @@ const Inicio: React.FC = () => {
                     <p>
                         Atendimento humanizado, profissionais capacitados e tecnologia de ponta para sua saúde.
                     </p>
-                    <Link to="/agendamento" className="btn btn-primary hero-cta">Agende sua Consulta</Link>
                 </div>
             </section>
 

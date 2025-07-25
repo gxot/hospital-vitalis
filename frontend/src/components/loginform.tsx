@@ -35,7 +35,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ setShowCadastro }) => {
         setSucesso('Login realizado com sucesso!');
         // Aguarde um pequeno tempo para mostrar a mensagem, se quiser
         setTimeout(() => {
-          navigate('/agendamento'); // Redireciona para a página de agendamento
+          navigate('/'); // Redireciona para a página de agendamento
         }, 500);
       } else {
         setErro('Usuário ou senha inválidos');

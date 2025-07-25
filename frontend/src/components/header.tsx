@@ -1,26 +1,33 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, NavLink } from "react-router-dom";
-import useAuth from '../hooks/useAuth'; // Corrigido o import
+import useAuth from '../hooks/useAuth';
 import '../styles/components/header.css';
 
 export default function Header() {
     const [isPatientMenuOpen, setPatientMenuOpen] = useState(false);
+    const [isAdmin, setIsAdmin] = useState(false);
     const { user, loading, logout } = useAuth();
+
+    useEffect(() => {
+        if (user) {
+            fetch('http://localhost:8080/details/isAdmin', { credentials: 'include' })
+                .then(res => res.json())
+                .then(data => setIsAdmin(data))
+                .catch(() => setIsAdmin(false));
+        } else {
+            setIsAdmin(false);
+        }
+    }, [user]);
 
     const togglePatientMenu = () => {
         setPatientMenuOpen(!isPatientMenuOpen);
     };
 
-    const closeMenus = () => {
-        setPatientMenuOpen(false);
-    };
-
-    if (loading) return null; // ou um spinner
+    if (loading) return null;
 
     return (
         <header className="site-header">
             <div className="header-container">
-
                 <nav className="main-nav">
                     <ul>
                         <li>
@@ -33,6 +40,13 @@ export default function Header() {
                                 Sobre
                             </NavLink>
                         </li>
+                        {isAdmin && (
+                            <li>
+                                <NavLink to="/adm" className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}>
+                                    Painel ADM
+                                </NavLink>
+                            </li>
+                        )}
                         {!user && (
                             <li>
                                 <NavLink to="/login" className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}>
@@ -42,7 +56,6 @@ export default function Header() {
                         )}
                     </ul>
                 </nav>
-
                 {user && (
                     <div className="profile-menu">
                         <button 
@@ -57,37 +70,46 @@ export default function Header() {
                         {isPatientMenuOpen && (
                             <div className='dropdown-menu-open'>
                                 <ul>
-                                    <li>
-                                        <Link to="/alterardadospaciente" className="dropdown-item">
-                                            Alterar dados
-                                        </Link>
-                                    </li>
-                                    <li>
-                                        <Link to="/alterarsenha" className="dropdown-item">
-                                            Alterar senha
-                                        </Link>
-                                    </li>
-                                    <li>
-                                        <Link to="/agendamento" className="dropdown-item">
-                                            Agendar Consulta
-                                        </Link>
-                                    </li>
-                                    <li>
-                                        <Link to="/meusagendamentos" className="dropdown-item">
-                                            Meus Agendamentos
-                                        </Link>
-                                    </li>
-                                    <li>
-                                        <button onClick={logout} className="dropdown-item logout">
-                                            Sair
-                                        </button>
-                                    </li>
+                                    {isAdmin ? (
+                                        <li>
+                                            <button onClick={logout} className="dropdown-item logout">
+                                                Sair
+                                            </button>
+                                        </li>
+                                    ) : (
+                                        <>
+                                            <li>
+                                                <Link to="/alterardadospaciente" className="dropdown-item">
+                                                    Alterar dados
+                                                </Link>
+                                            </li>
+                                            <li>
+                                                <Link to="/alterarsenha" className="dropdown-item">
+                                                    Alterar senha
+                                                </Link>
+                                            </li>
+                                            <li>
+                                                <Link to="/agendamento" className="dropdown-item">
+                                                    Agendar Consulta
+                                                </Link>
+                                            </li>
+                                            <li>
+                                                <Link to="/meusagendamentos" className="dropdown-item">
+                                                    Meus Agendamentos
+                                                </Link>
+                                            </li>
+                                            <li>
+                                                <button onClick={logout} className="dropdown-item logout">
+                                                    Sair
+                                                </button>
+                                            </li>
+                                        </>
+                                    )}
                                 </ul>
                             </div>
                         )}
                     </div>
                 )}
-
             </div>
         </header>
     );
